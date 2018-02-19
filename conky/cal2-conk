@@ -1,0 +1,65 @@
+###  Window Settings
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title Calendar
+
+minimum_size 200 0  ### width | height
+maximum_width 200
+
+alignment tl ### tl = top left
+gap_x 540	### left | right
+gap_y 100	### up | down
+
+###  Font Settings
+use_xft yes
+xftfont Droid Sans Mono:bold:size=12
+xftalpha 1
+override_utf8_locale yes
+uppercase no
+
+###  Colour Settings
+draw_shades no #yes
+default_shade_color 000000
+
+draw_outline no # amplifies text if yes
+default_outline_color 000000
+
+default_color cccccc
+color0 aaaaaa 
+color1 999999 
+color2 eeeeee 
+color3 666666
+
+###  Borders Section
+draw_borders no
+stippled_borders 5
+border_inner_margin 5
+border_outer_margin 0
+border_width 2
+draw_graph_borders yes
+
+###  Miscellaneous Section
+background yes
+use_spacer none
+text_buffer_size 6144
+no_buffers yes
+short_units yes
+pad_percents 2
+imlib_cache_size 0
+double_buffer yes
+
+update_interval 1
+
+TEXT
+${font Cuprum: size=48}${color0}${goto 60}${time %H}${voffset -10}${goto 120}${font Cuprum: size=32}${color0}${time %M}${font Droid Sans Mono: size=14}${color1}${voffset 10}
+${alignc}${time %A}
+${alignc}${time %d.%m.%Y}
+${alignc}vko ${time %V}${color1}${font}${voffset 40}
+
+${color1}${execpi 1800 LAR=`date +%-d`; ncal -wbhM| sed -e 's/\<'$LAR'\>/${color2}&${color1}/' | sed ':a;N;$!ba;s/\n/\n/g'}
+
+${color3}${execpi 900 ncal -bh -m `date +%m` -A1 -B-1 | sed ':a;N;$!ba;s/\n/\n/g'}${color}${font}

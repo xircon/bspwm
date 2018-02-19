@@ -1,0 +1,60 @@
+conky.config = {
+background=false,
+update_interval=1,
+double_buffer=true,
+no_buffers=true,
+imlib_cache_size=10,
+draw_shades=false,
+draw_outline=false,
+draw_borders=false,
+gap_x=80,
+gap_y=20,
+alignment="top_left",
+maximum_width=400,
+own_window=true,
+own_window_type="desktop",
+own_window_transparent = true,
+own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+own_window_argb_visual=true,
+use_xft=true,
+xftalpha=1,
+text_buffer_size=256,
+override_utf8_locale=true,
+font="Droid Sans:size=10",
+color0='80FFF9',
+}
+conky.text = [[
+${color}Mail: xirconuk@gmail.com (11 new)
+
+ ${color0}"4 more sleeps to go!"
+    ${color lightgrey}Company Shop (membership@companyshop.ltd.uk)
+
+ ${color0}"No season's greetings for you"
+    ${color lightgrey}Windscribe (noreply@windscribe.com)
+
+ ${color0}"Reward offered for new survey"
+    ${color lightgrey}Nectar Canvass (no-reply@nectarcanvass.rn-partner.com)
+
+ ${color0}"Steve , don't miss your latest $5 recommendations"
+    ${color lightgrey}Packt (contact@packtpub.com)
+
+ ${color0}"25% off + more presents for music, tv, and photo lovers!"
+    ${color lightgrey}Plex News (noreply@plex.tv)
+
+ ${color0}"Keeping in touch - December 2017"
+    ${color lightgrey}Paul Blomfield (paul.blomfield.mp@parliament.uk)
+
+ ${color0}"[Manjaro Linux Forum] [Technical Issues and Assistance/Programming] Conky + Python + Gmail"
+    ${color lightgrey}Ian (noreply@manjaro.org)
+
+ ${color0}"Last chance - festive deals end at midnight."
+    ${color lightgrey}giffgaff (no_reply@giffgaff.com)
+
+ ${color0}"Get that gift in time for Christmas!"
+    ${color lightgrey}Maplin (newsletter@maplin.co.uk)
+
+ ${color0}"Alzheimer's Society: "Alzheimers Society: This is us""
+    ${color lightgrey}YouTube (noreply@youtube.com)
+
+ ${color0}more
+]]

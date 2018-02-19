@@ -1,0 +1,276 @@
+#!/bin/bash
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias killx="setxkbmap -option terminate:ctrl_alt_bksp"
+alias blame="systemd-analyze blame"
+alias cx='chmod +x'
+alias fixc="killall cairo-dock && cairo-dock &"
+alias joerc="cd ~ && joe .joerc && cp -f .joerc ~/Dropbox/config_backup && sudo cp -f .joerc /root/.joerc"
+alias upf="yaourt -Ss featherpad && pacaur -S featherpad-git"
+alias updb="time sudo updatedb"
+alias updatedb="time sudo updatedb"
+alias locate="locate -ie"
+alias spectre="dmesg | grep microcode  && sudo spectre-meltdown-checker"
+#alias yup="date && time yaourt -Syyua --noconfirm"
+alias pmi="sudo pacman -Qs "
+alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && yaourt -Syyua --noconfirm"
+#alias up?="update-notifier"
+alias yy="yaourt"
+alias yyr="yaourt -R "
+alias yrt="yaourt"
+alias yys="yaourt -Si "
+alias yyi="yaourt -Qi "
+alias yync="yaourt --m-arg "--skipchecksums" -S "
+alias pinst="expac -Q \"%-33n   %d\" | fzf --reverse -m --header=\"TAB key to (un)select. ENTER key to remove. ESC to quit.\" --prompt='Enter string to filter list > ' | awk '{print $1}'"
+alias ipkg="~/scripts/ipkg.sh"
+alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
+
+#Bookmark Directory system:
+alias bmm='echo `pwd`'
+bm() {
+   echo $(pwd)
+}
+
+cbm() {
+   dir=$(cat ~/.my_bookmarks | fzf --reverse -e +s)
+   cd $dir
+}   
+
+alias zshc="cd ~ && micro .zshrc && unalias -m '*' && . ~/.zshrc && cp -f .zshrc ~/.config/bspwm/zsh"
+alias aliases="cd ~ && micro .aliasesrc && unalias -m '*' && . ~/.aliasesrc && cp -f .aliasesrc ~/.config/bspwm/zsh"
+alias vv="viewnior"
+alias xv="xviewer"
+alias netup="sudo systemctl restart NetworkManager && killall nm-applet && sleep 5 && nm-applet&"
+alias killl="killall"
+alias hs="history | grep "
+alias lal="cd ~ && cat .zshrc | grep alias"
+alias py2="python2"
+alias py="python"
+alias pmm="sudo pacman-mirrors -f0"
+alias spac="sudo pacman -S "
+alias updev="pacaur -Syyua --devel -q --needed --noconfirm --noedit"
+
+#Suspend Lid Switch
+alias sp-="systemd-inhibit --what=handle-lid-switch sleep 2592000 &"
+alias sp+="killall systemd-inhibit"
+
+#Sound
+alias boost+="pactl -- set-sink-volume 1 150%"
+alias boost-="pactl -- set-sink-volume 1 50%"
+
+#Directory & File
+alias ..="cd .."
+alias app="cd ~/scripts/appjar"
+alias giton="git config --global oh-my-zsh.hide-status 0"
+alias gitoff="git config --global oh-my-zsh.hide-status 1"
+alias ldir="ls -1d */"
+alias ls="ls --color=always"
+alias lh="ls -lah"
+alias iotop="sudo iotop"
+alias md="mkdir"
+alias paccfg="sudo micro /etc/pacman.conf /etc/personal_repos.conf"
+alias cleanc="sudo  paccache -rk 3 && paccache -ruk0"
+alias rmcoredmp="sudo rm -r /var/lib/systemd/coredump/*"
+alias roku="roku 192.168.0.7"
+alias nsp="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0"
+alias sp="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 1"
+#Directory Shortcuts:
+alias home="~"
+alias ~="cd ~/"
+alias dl="cd ~/Downloads"
+alias drpb="cd ~/Dropbox"
+alias media="cd /home/media/"
+alias sc="cd ~/scripts"
+#Memory:
+alias psmem="sudo ps_mem"
+alias psg="ps aux | grep "
+alias search=searchfunction
+alias weather="curl -s wttr.in/sheffield"
+alias wwws+="twistd3 web --path ."
+alias wwws-="kill \`cat twistd.pid\`"
+alias lc='colorls'
+#i3
+alias i3c="featherpad ~/.i3/config &"
+alias e3="~/.i3/e3.sh"
+
+#bspwm
+#alias bsp="cd ~/.config/bspwm"
+
+#alias e3="cd ~/.i3 && joe ~/.i3/config.conf && i3bang config.conf && cp config.conf "backup/config.backup.$(date +%F_%R_%S)"&&i3-msg reload && gitup && cd ~/.i3"
+alias caps="setxkbmap -option"
+alias nocaps="setxkbmap -option caps:none"
+alias gitup="cd ~/scripts && git push --all -u origin && git add * && git commit -a -m 'This is a commit' && git push --all -u origin"
+
+#cool :D
+alias map="telnet mapscii\.me"
+alias g="googler "
+
+# gcalcli
+alias a="gcalcli agenda"
+alias a2="gcalcli calw 2"
+alias a1="gcalcli calw 1"
+
+#openbox
+alias ob="cd ~/.config/openbox && micro autostart"
+
+#kernel
+alias modload="sudo /usr/lib/systemd/systemd-modules-load"
+alias status="sudo systemctl status "
+#Screen
+alias scr="xrandr --size 1600x900"
+
+# Editor & Notes
+alias j="joe"
+alias sj="sudo joe"
+alias fp="featherpad "
+alias sfp="sudo featherpad "
+alias notes="clear && sncli sync && sncli"
+alias e="micro "
+alias mu="micro"
+alias se="sudo micro "
+
+#Quake
+alias nightmare="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game nightmare +map nightmare"
+alias satyr="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game alk14 +map alk14"                                                                             ✔ 
+alias amari="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game amari +map amari"
+
+#Sky Remote:
+#play
+alias pp="sky-remote-cli 192.168.0.3 play"
+#pause
+alias p="sky-remote-cli 192.168.0.3 pause"
+#alias pse="sky-remote-cli 192.168.0.3 pause"
+#TV Guide
+alias tvguide="sky-remote-cli 192.168.0.3 tvguide"
+#Fast forward
+alias f1="sky-remote-cli 192.168.0.3 fastforward"
+alias f="sky-remote-cli 192.168.0.3 fastforward fastforward fastforward fastforward" 
+#Rewind
+alias r1="sky-remote-cli 192.168.0.3 rewind"
+alias r4="sky-remote-cli 192.168.0.3 rewind rewind rewind rewind" 
+#Channel
+alias s="sky-remote-cli 192.168.0.3 "
+alias streamcr="/home/steve/git/stream2chromecast/stream2chromecast.py "
+#List installed
+yyl () { yaourt $* | grep installed }
+locg () { locate $1 | grep $2 }
+catg () { cat $1 | grep $2 }
+catb () {cat `which $1` | fzf --reverse; echo `which $1` } 
+catf () {cat $1 | fzf -e -i --reverse} 
+fcat () {cat $1 | fzf -e -i --reverse} 
+
+
+yupf ()
+{ date
+  sudo pacman-mirrors -f 8
+  echo "\n\e[34m#######################"
+  echo "# Updating system.....#"
+  echo "#######################\e[39m\n"    
+  time pacaur -Syyu --color=auto --needed --noconfirm --noedit
+  echo "\n\e[34m######################"
+  echo "# Cleaning cache.....#"
+  echo "######################\e[39m\n"
+  sudo paccache -rk3
+  sudo paccache -ruk0
+  echo "\n\e[34m##############################"
+  echo "# Optimizing databases...... #"
+  echo "##############################\e[39m\n"
+  sudo pacman-optimize
+  sudo /usr/bin/localepurge-config
+  sudo localepurge
+  echo "\e[34m##################"
+  echo "# Finished...... #"
+  echo "##################\e[39m\n"
+}  
+
+yup ()
+{ d1=`date`
+  sudo pacman-mirrors -f0
+  echo "\n\e[1m\e[31m################################################################\e[39m"
+  cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
+  echo "\e[31m################################################################\e[39m\e[0m\n"
+  echo "\n\e[1m\e[34m#######################"
+  echo "# Updating system.....#"
+  echo "#######################\e[39m\e[0m\n"    
+  time pacaur -Syyu --color=auto --noconfirm --needed --noedit
+  echo "Start  $d1"
+  echo "Finish `date`"
+}  
+alias mucd="cd ~/.config/micro"
+
+mucfg ()
+{
+    local temp
+    #echo "\e[31m"
+    echo "\e[31m"
+	echo " Micro Editor Configuration " | boxes -d shell
+	echo "\e[39m\e[49m"
+	#\e[0m"
+	echo "1>. Edit Settings"
+	echo "2>. Edit Key Bindings"
+	echo "3>. Edit Colour Scheme"
+	echo "4>. Github page"
+	read temp
+	case $temp in
+	    1)
+	        cd ~/.config/micro
+	        micro settings.json ;;
+	    2)
+	        cd ~/.config/micro
+	        micro bindings.json ;;	    
+	    
+	    3)
+	        cd ~/.config/micro
+	        micro colorschemes/my-simple.micro ;;
+
+	    4)
+	    	firefox https://github.com/zyedidia/micro ;;	        
+	        	        
+	esac
+	
+}
+
+
+swapb ()
+{
+    local temp
+    MY_BROWSER="~/scripts/browser.sh"
+    echo "\e[31m"
+   	echo " Swap Browser" | boxes -d shell
+   	echo "\e[39m\e[49m"
+   	echo "1>. Vivaldi"
+   	echo "2>. Firefox Nightly"
+   	echo "3>. Firefox"
+   	echo "4>. Google Chrome"
+   	read temp
+
+   	case $temp in
+   	    1)
+   	        cp ~/scripts/vivaldi.sh ~/scripts/browser.sh ;;
+
+   	    2)
+   	        cp ~/scripts/firefox-beta.sh ~/scripts/browser.sh ;;
+
+   	    3)
+   	        cp ~/scripts/firefox.sh ~/scripts/browser.sh ;;
+
+   	    4)
+   	        cp ~/scripts/google-chrom.sh ~/scripts/browser.sh ;;
+
+    esac
+}
+
+rustp () { cargo new $1 --bin && cd $1 }
+        
+alias wallp='cd ~/Wallpaper'
+alias myip='curl ifconfig.co'
+alias cfg='cd ~/.config'
+alias cclip='xclip -selection clipboard'
+alias cls='clear'
+alias xckill='killall xcape'
+alias devel='pacaur -Syyu --devel --noconfirm'
+alias bspconk='cd ~/.config/bspwm/conky'

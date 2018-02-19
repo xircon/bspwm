@@ -1,0 +1,56 @@
+conky.config = {
+background=false,
+update_interval=1,
+double_buffer=true,
+no_buffers=true,
+imlib_cache_size=10,
+draw_shades=false,
+draw_outline=false,
+draw_borders=false,
+gap_x=80,
+gap_y=20,
+alignment="top_left",
+maximum_width=400,
+own_window=true,
+own_window_type="desktop",
+own_window_transparent = true,
+own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+own_window_argb_visual=true,
+use_xft=true,
+xftalpha=1,
+text_buffer_size=256,
+override_utf8_locale=true,
+font="Droid Sans:size=10",
+color0='80FFF9',
+}
+conky.text = [[
+${color}Mail: xirconuk@gmail.com (9 new)
+
+ ${color0}"Passing arguments between scripts"
+    ${color lightgrey}Joe (josephj@main.nc.us)
+
+ ${color0}"Reward offered for new survey"
+    ${color lightgrey}Nectar Canvass (no-reply@nectarcanvass.rn-partner.com)
+
+ ${color0}"Shop our top Tech Deals - Up to 30% off!"
+    ${color lightgrey}Maplin (newsletter@maplin.co.uk)
+
+ ${color0}"Your ebook bargains for this week"
+    ${color lightgrey}BookBub (info@bookbub.com)
+
+ ${color0}"Your last chance of 2017! Get TeamViewer 13 today. You in?"
+    ${color lightgrey}TeamViewer News (mailings-noreply@teamviewer.com)
+
+ ${color0}"[Manjaro Linux Forum] [Off-Topic] HP Windows laptop? We know what you are typing :D"
+    ${color lightgrey}Mike Simms (noreply@manjaro.org)
+
+ ${color0}"May to discuss 'end' plan for Brexit | Murder probe after British woman found dead in Lebanon | Power cut at world's busiest airport | Farah named Sports Personality of the Year"
+    ${color lightgrey}BBC News Daily (bbcnewsdaily@bbc.co.uk)
+
+ ${color0}"New login to Twitter from Firefox on Linux"
+    ${color lightgrey}Twitter (verify@twitter.com)
+
+ ${color0}"[Atom Discussion] Summary"
+    ${color lightgrey}Atom Discussion sum. (github_atom@discoursemail.com)
+
+]]

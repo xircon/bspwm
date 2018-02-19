@@ -1,0 +1,2 @@
+#!/bin/bash
+paste <(netstat -utn | awk '{print $5}' | sed '1,2d' | sed '/127.0.0.1/d' | awk 'sub(/\:[0-9]+/,"")' | uniq) <(netstat -utn | awk '{print $5}' | sed '1,2d' | sed '/127.0.0.1/d' | awk 'sub(/\:[0-9]+/,"")' | uniq | xargs -n 1 geoiplookup 2>/dev/null | sed '/City Edition/d' | sed -r 's/GeoIP [a-zA-Z]+ Edition\: //g' | sed -r 's/, .+//g' | xargs -n 2 -d'\n')

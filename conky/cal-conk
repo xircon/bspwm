@@ -1,0 +1,68 @@
+conky.config = {
+
+-------------------------------------
+--  Generic Settings
+-------------------------------------
+--background=false,
+background=true,
+update_interval=1,
+double_buffer=true,
+no_buffers=true,
+imlib_cache_size=10,
+
+draw_shades=false,
+draw_outline=true,
+draw_borders=true,
+
+
+-------------------------------------
+--  Window Specifications
+-------------------------------------
+--gap_x=80,
+--gap_y=20,
+
+alignment="bottom_middle",
+
+--minimum_height=400,
+--minimum_width=600,
+
+own_window=true,
+--own_window=false,
+own_window_type="desktop",
+own_window_transparent = false,
+own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+
+own_window_argb_visual=true,
+own_window_argb_value=60,
+--own_window_argb_value=0,
+
+
+-------------------------------------
+--  Text Settings
+-------------------------------------
+use_xft=true,
+xftalpha=1,
+font="Droid Sans:size=10",
+text_buffer_size=256,
+override_utf8_locale=true,
+
+
+-------------------------------------
+--  Color Scheme
+-------------------------------------
+default_color='FFFFFF',
+
+color0='80FFF9', -- clock1
+color1='80FFF9', -- date
+color2='80FFF9', -- current temperature
+color3='80FFF9', -- high tempratures
+color4='80FFF9', -- low tempratures
+color5='80FFF9', -- days
+}
+conky.text = [[
+#${color5}\n\n\n\n
+${font DejaVu Sans Mono :size=14}${alignc}${color 0077FF}${exec gcal --starting-day=monday | cut -c23-44 --complement} 
+#${voffset -2}${color0}${font Poky:size=15}d${font}${color}${voffset -8}${font Liberation Mono:size=8}${execpi 10800 DJS=`date +%-d`; cal | sed 's/^/${goto 32} /' | sed '1d' | sed s/" $DJS "/" "'${font Liberation Mono:style=bold:size=8}${color1}'"$DJS"'${color}${font}${font Liberation Mono:size=8}'" "/}${font}${font}${voffset -14}
+#${font DejaVu Sans Mono :size=14}${alignc}${execpi 60 ~/.config/bspwm/scripts/cal2.py} 
+#${color3}${execpi 900 ncal -bh -m `date +%m` -A1 -B-1 | sed ':a;N;$!ba;s/\n/\n/g'}${color}${font}
+]]
