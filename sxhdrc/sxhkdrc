@@ -346,3 +346,6 @@ alt + ctrl + m
 
 ctrl + alt + u
 	update-notifier
+
+alt + j
+        /home/steve/.config/bspwm/scripts/copy2omni.py
