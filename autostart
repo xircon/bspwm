@@ -30,6 +30,7 @@ numlockx on &
 skippy-xd --start_daemon &
 brightside &
 copyq &
+dropbox &
 
 feh --randomize --bg-fill ~/wallpaper/Dark/* &
 
