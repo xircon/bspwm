@@ -278,7 +278,8 @@ super + shift + b
 	$BROWSER
     		
 super + e
-	pcmanfm 
+    ~/scripts/pcmanfm.sh
+	#pcmanfm 
 
 super + shift + e
 	$TERMINAL -e ranger
