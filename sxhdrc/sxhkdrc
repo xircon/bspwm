@@ -353,3 +353,6 @@ alt + j
         /home/steve/.config/bspwm/scripts/copy2omni.py
 alt + n
 	variety -n
+
+ctrl + alt + z
+	skippy-xd --toggle-window-picker
