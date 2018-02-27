@@ -346,7 +346,8 @@ alt + r
 alt + ctrl + m
 	amixer set Master toggle
 
-ctrl + alt + u
+#ctrl + alt + u
+super + u
 	update-notifier
 
 alt + j
@@ -356,3 +357,7 @@ alt + n
 
 ctrl + alt + z
 	skippy-xd --toggle-window-picker
+
+alt + q
+	    mygtkmenui -- .config/GTKmenu/MainMenu
+	

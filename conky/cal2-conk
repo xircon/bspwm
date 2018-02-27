@@ -1,8 +1,8 @@
 ###  Window Settings
-own_window yes
+own_window no
 own_window_type desktop
 own_window_transparent yes
-own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_hints undecorated,below,skip_taskbar,skip_pager
 own_window_colour 000000
 own_window_class Conky
 own_window_title Calendar

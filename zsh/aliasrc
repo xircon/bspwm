@@ -14,6 +14,7 @@ alias upf="yaourt -Ss featherpad && pacaur -S featherpad-git"
 alias updb="time sudo updatedb"
 alias updatedb="time sudo updatedb"
 alias locate="locate -ie"
+alias loc="locate -ie"
 alias spectre="dmesg | grep microcode  && sudo spectre-meltdown-checker"
 #alias yup="date && time yaourt -Syyua --noconfirm"
 alias pmi="sudo pacman -Qs "
@@ -25,9 +26,15 @@ alias yrt="yaourt"
 alias yys="yaourt -Si "
 alias yyi="yaourt -Qi "
 alias yync="yaourt --m-arg "--skipchecksums" -S "
+alias orp='sudo pacman -Rs $(pacman -Qqdt)'
 alias pinst="expac -Q \"%-33n   %d\" | fzf --reverse -m --header=\"TAB key to (un)select. ENTER key to remove. ESC to quit.\" --prompt='Enter string to filter list > ' | awk '{print $1}'"
 alias ipkg="~/scripts/ipkg.sh"
 alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
+
+#btrfs
+alias snapit='cd / && sudo btrfs subvolume snapshot / /snapshots/@`date +"%Y%m%d-%H:%M"` && sudo update-grub'
+alias snapls='sudo btrfs subvolume list -a /'
+
 
 #Bookmark Directory system:
 alias bmm='echo `pwd`'
@@ -189,7 +196,12 @@ yupf ()
 
 yup ()
 { d1=`date`
-  sudo pacman-mirrors -f0
+  echo "Update mirrors?"
+  read temp
+  case $temp in
+       y)
+       	   sudo pacman-mirrors -f0
+  esac
   echo "\n\e[1m\e[31m################################################################\e[39m"
   cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
   echo "\e[31m################################################################\e[39m\e[0m\n"

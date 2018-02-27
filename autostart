@@ -29,10 +29,11 @@ nm-applet &
 pa-applet &
 indicator-kdeconnect &
 numlockx on &
-skippy-xd --start_daemon &
+skippy-xd --start-daemon &
 brightside &
 copyq &
 dropbox &
+ulauncher &
 
 feh --randomize --bg-fill ~/wallpaper/Dark/* &
 
