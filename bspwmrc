@@ -96,6 +96,7 @@ bspc rule -a Corebird state=floating
 bspc desktop ^4 --layout monocle
 bspc rule -a Ulauncher border=off
 bspc rule -a Spacefm state=floating center=true
+bspc rule -a System-config-printer.py state=floating center=true
 bspc rule -a Orage state=floating center=true
 bspc rule -a Qalculate-gtk state=floating center=true
 bspc rule -a Qt-recordMyDesktop state=floating center=true

@@ -360,4 +360,6 @@ ctrl + alt + z
 
 alt + q
 	    mygtkmenui -- .config/GTKmenu/MainMenu
-	
+
+alt + x
+	xkill	
