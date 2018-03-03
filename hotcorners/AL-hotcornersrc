@@ -1,0 +1,5 @@
+[Hot Corners]
+top_left_corner_command = skippy-xd
+top_right_corner_command = bspc node --focus next
+bottom_left_corner_command = gmrun
+bottom_right_corner_command = skippy-xd

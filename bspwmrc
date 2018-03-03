@@ -1,6 +1,6 @@
 #! /bin/sh
 gap=15
-PANEL_HEIGHT=30
+PANEL_HEIGHT=32
 export gap
 export PANEL_HEIGHT
 
@@ -83,6 +83,7 @@ bspc rule -a libreoffice state=tiled
 ### My rules ###
 ################
 bspc rule -a Sakura desktop ^2 follow=on
+bspc rule -a st-256color desktop ^2 follow=on
 bspc rule -a Pcmanfm desktop ^6 follow=on
 bspc rule -a Waterfox desktop ^4 follow=on
 bspc rule -a Firefox desktop ^4 follow=on

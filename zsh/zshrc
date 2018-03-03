@@ -98,6 +98,9 @@ bindkey '^R' fzf-history-widget
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+QT_LOGGING_RULES='*=false'
+export QT_LOGGING_RULES
+
 export POWERLINE_HIDE_USER_NAME=1 
 export POWERLINE_PATH="short"
 export MICRO_TRUECOLOR=1

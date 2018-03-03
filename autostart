@@ -30,10 +30,13 @@ pa-applet &
 indicator-kdeconnect &
 numlockx on &
 skippy-xd --start-daemon &
-brightside &
+#brightside &
+/home/steve/.config/bspwm//hotcorners/hotcorners.py --daemon &
 copyq &
 dropbox &
 ulauncher &
+ulauncher-toggle &
+
 
 feh --randomize --bg-fill ~/wallpaper/Dark/* &
 

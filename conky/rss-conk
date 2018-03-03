@@ -62,8 +62,8 @@ conky.text = [[
 ${font Poiret One:size=14}
 ${color5}BBC News Feed
 ${font}${color}
-#${rss http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml 15 item_titles 10 } 
-${execpi 60 rsstail -u http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml  -N -1 -n 20}
+#${rss http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml 10 item_titles 10 } 
+${execpi 60 rsstail -u http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml  -N -1 -n 10}
 #${execpi 60 gcalcli --conky agenda}
 #${execpi 60 /home/steve/.config/bspwm/conky/temp.sh}
 ]]

@@ -47,6 +47,9 @@ cbm() {
    cd $dir
 }   
 
+#Interactive cd
+alias cdr='ranger --show-only-dirs --choosedir=/tmp/.dir && $(cat /tmp/.dir)'
+
 alias zshc="cd ~ && micro .zshrc && unalias -m '*' && . ~/.zshrc && cp -f .zshrc ~/.config/bspwm/zsh"
 alias aliases="cd ~ && micro .aliasesrc && unalias -m '*' && . ~/.aliasesrc && cp -f .aliasesrc ~/.config/bspwm/zsh"
 alias vv="viewnior"
@@ -89,6 +92,7 @@ alias sp="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action
 alias home="~"
 alias ~="cd ~/"
 alias dl="cd ~/Downloads"
+alias conf="cd ~/.config"
 alias drpb="cd ~/Dropbox"
 alias media="cd /home/media/"
 alias sc="cd ~/scripts"
