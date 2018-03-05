@@ -8,6 +8,7 @@
 
 
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
+avant-window-navigator &
 xsetroot -cursor_name left_ptr &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 xrdb merge .Xresources &
@@ -23,7 +24,6 @@ sh ~/.fehbg &
 ## Reduces flicker. Disabling saves resources.
 ~/.config/bspwm/xcape/my-xcape.sh &
 compton -b &
-avant-window-navigator &
 autokey-gtk &
 nm-applet &
 pa-applet &
@@ -85,5 +85,5 @@ conky -c /home/steve/.config/bspwm/conky/gmail2-conk &
 conky -c /home/steve/.config/bspwm/conky/cal-conk &
 conky -c /home/steve/.config/bspwm/conky/agenda-conk &
 copyq hide &
-(sleep 10 && megasync) &
+(sleep 20 && megasync) &
 #/usr/lib/mate-notification-daemon/mate-notification-daemon &

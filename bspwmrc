@@ -84,6 +84,7 @@ bspc rule -a libreoffice state=tiled
 ################
 bspc rule -a Sakura desktop ^2 follow=on
 bspc rule -a st-256color desktop ^2 follow=on
+bspc rule -a Termite desktop ^2 follow=on
 bspc rule -a Pcmanfm desktop ^6 follow=on
 bspc rule -a Waterfox desktop ^4 follow=on
 bspc rule -a Firefox desktop ^4 follow=on

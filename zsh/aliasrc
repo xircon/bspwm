@@ -49,6 +49,7 @@ cbm() {
 
 #Interactive cd
 alias cdr='ranger --show-only-dirs --choosedir=/tmp/.dir && $(cat /tmp/.dir)'
+alias wall='ranger ~/wallpaper --choosefile=/tmp/.rfile && $(feh --bg-fill `cat /tmp/.rfile`)'
 
 alias zshc="cd ~ && micro .zshrc && unalias -m '*' && . ~/.zshrc && cp -f .zshrc ~/.config/bspwm/zsh"
 alias aliases="cd ~ && micro .aliasesrc && unalias -m '*' && . ~/.aliasesrc && cp -f .aliasesrc ~/.config/bspwm/zsh"
@@ -219,18 +220,21 @@ yup ()
 }  
 alias mucd="cd ~/.config/micro"
 
-mucfg ()
+mycfg ()
 {
     local temp
     #echo "\e[31m"
     echo "\e[31m"
-	echo " Micro Editor Configuration " | boxes -d shell
+	echo "Configuration Editor" | boxes -d shell
 	echo "\e[39m\e[49m"
 	#\e[0m"
-	echo "1>. Edit Settings"
-	echo "2>. Edit Key Bindings"
-	echo "3>. Edit Colour Scheme"
+	echo "1>. Micro - Edit Settings"
+	echo "2>. Micro - Edit Key Bindings"
+	echo "3>. Micro - Edit Colour Scheme"
 	echo "4>. Github page"
+	echo "5>. Compton.conf"
+	echo "6>. Termite.conf"
+	
 	read temp
 	case $temp in
 	    1)
@@ -245,7 +249,12 @@ mucfg ()
 	        micro colorschemes/my-simple.micro ;;
 
 	    4)
-	    	firefox https://github.com/zyedidia/micro ;;	        
+	    	firefox https://github.com/zyedidia/micro ;;
+	    5)
+	        mu ~/.config/bspwm/compton/compton.conf ;;
+
+	    6)
+			mu ~/.config/termite/config	   	        
 	        	        
 	esac
 	
