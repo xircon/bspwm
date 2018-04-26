@@ -61,5 +61,6 @@ font="Cousine Regular:size=11",
 conky.text = [[
 ${font}
 ${execpi 60 gcalcli --conky agenda "`date`" "`datemath today + 3`"}
+${alignr}${execi 3600 wget -q -O - "https://www.google.co.uk/search?num=50&dcr=1&biw=1191&bih=815&ei=qiq2WpfaNcLXzwKggpWwDg&q=gbp+brl&oq=gbp+brl&gs_l=psy-ab.3..0l3j0i22i30k1l7.34064.34064.0.35404.1.1.0.0.0.0.126.126.0j1.1.0....0...1c..64.psy-ab..0.1.126....0.lGwO7Bqr8Ss"|grep |sed 's/<[^>]*>//g'} 
 #${execpi 300 gcalcli --nolineart --conky --calendar=xirconuk@gmail.com calw 1}
 ]]

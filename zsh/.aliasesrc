@@ -16,6 +16,7 @@ alias updatedb="time sudo updatedb"
 alias locate="locate -ie"
 alias loc="locate -ie"
 alias spectre="dmesg | grep microcode  && sudo spectre-meltdown-checker"
+alias gpgrk="gpg --recv-key "
 #alias yup="date && time yaourt -Syyua --noconfirm"
 alias pmi="sudo pacman -Qs "
 alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && yaourt -Syyua --noconfirm"
@@ -34,7 +35,9 @@ alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
 #btrfs
 alias snapit='cd / && sudo btrfs subvolume snapshot / /snapshots/@`date +"%Y%m%d-%H:%M"` && sudo update-grub'
 alias snapls='sudo btrfs subvolume list -a /'
-
+alias defragr='sudo btrfs filesystem defragment -r /'
+alias defragh='sudo btrfs filesystem defragment -r /home'
+alias defragv='sudo btrfs filesystem defragment -r /var'
 
 #Bookmark Directory system:
 alias bmm='echo `pwd`'
@@ -61,7 +64,7 @@ alias hs="history | grep "
 alias lal="cd ~ && cat .zshrc | grep alias"
 alias py2="python2"
 alias py="python"
-alias pmm="sudo pacman-mirrors -f0"
+alias pmm="sudo pacman-mirrors -f"
 alias spac="sudo pacman -S "
 alias updev="pacaur -Syyua --devel -q --needed --noconfirm --noedit"
 
@@ -83,7 +86,7 @@ alias ls="ls --color=always"
 alias lh="ls -lah"
 alias iotop="sudo iotop"
 alias md="mkdir"
-alias paccfg="sudo micro /etc/pacman.conf /etc/personal_repos.conf"
+alias paccfg="se /etc/pacman.conf /etc/personal_repos.conf"
 alias cleanc="sudo  paccache -rk 3 && paccache -ruk0"
 alias rmcoredmp="sudo rm -r /var/lib/systemd/coredump/*"
 alias roku="roku 192.168.0.7"
@@ -97,6 +100,7 @@ alias conf="cd ~/.config"
 alias drpb="cd ~/Dropbox"
 alias media="cd /home/media/"
 alias sc="cd ~/scripts"
+alias pxc="cd /home/steve/scripts/i3 && ./plasma-xcape.sh"
 #Memory:
 alias psmem="sudo ps_mem"
 alias psg="ps aux | grep "
@@ -120,6 +124,7 @@ alias gitup="cd ~/scripts && git push --all -u origin && git add * && git commit
 #cool :D
 alias map="telnet mapscii\.me"
 alias g="googler "
+alias wgetp="wgetpaste -c gists "
 
 # gcalcli
 alias a="gcalcli agenda"
@@ -143,7 +148,7 @@ alias sfp="sudo featherpad "
 alias notes="clear && sncli sync && sncli"
 alias e="micro "
 alias mu="micro"
-alias se="sudo micro "
+alias se="TERM=xterm-256color sudo micro "
 
 #Quake
 alias nightmare="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game nightmare +map nightmare"
@@ -205,7 +210,7 @@ yup ()
   read temp
   case $temp in
        y)
-       	   sudo pacman-mirrors -f0
+       	   sudo pacman-mirrors -f
   esac
   echo "\n\e[1m\e[31m################################################################\e[39m"
   cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
@@ -214,6 +219,7 @@ yup ()
   echo "# Updating system.....#"
   echo "#######################\e[39m\e[0m\n"    
   time pacaur -Syyu --color=auto --noconfirm --needed --noedit
+  time pacaur -Sya --color=auto --noconfirm --needed --noedit
   echo "Start  $d1"
   echo "Finish `date`"
   sudo updatedb &
@@ -234,7 +240,7 @@ mycfg ()
 	echo "4>. Github page"
 	echo "5>. Compton.conf"
 	echo "6>. Termite.conf"
-	
+	echo "7>. Grub"
 	read temp
 	case $temp in
 	    1)
@@ -254,8 +260,9 @@ mycfg ()
 	        mu ~/.config/bspwm/compton/compton.conf ;;
 
 	    6)
-			mu ~/.config/termite/config	   	        
-	        	        
+			mu ~/.config/termite/config ;;	   	        
+	    7) 
+	        se /etc/default/grub   	        
 	esac
 	
 }
@@ -293,7 +300,7 @@ swapb ()
 rustp () { cargo new $1 --bin && cd $1 }
         
 alias wallp='cd ~/Wallpaper'
-alias myip='curl ifconfig.co'
+alias myip='echo ipv6 && curl v6.ifconfig.co && echo ipv4 && curl v4.ifconfig.co'
 alias cfg='cd ~/.config'
 alias cclip='xclip -selection clipboard'
 alias cls='clear'

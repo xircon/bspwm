@@ -1,14 +1,26 @@
 #!/bin/bash
-
+export LANG="en_US.UTF-8"
 SAVEHIST=10
 HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_DUPS 
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
  
-export TERM="xterm-256color"
+export TERM="xterm-termite"
+#if [[ $TERM == xterm-termite ]]; then
+#  . /etc/profile.d/vte.sh
+#  __vte_osc7
+#fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=/usr/share/oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -16,6 +28,8 @@ ZSH=/usr/share/oh-my-zsh/
 #ZSH_THEME="powerline"
 POWERLEVEL9K_MODE='awesome-fontconfig'
 ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="/usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme"
+#ZSH_THEME="themes/powerlevel9k/powerlevel9k.zsh-theme"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time vcs context dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
 POWERLEVEL9K_OS_ICON_BACKGROUND="99"
@@ -274,29 +288,29 @@ PERL_MM_OPT="INSTALL_BASE=/home/steve/perl5"; export PERL_MM_OPT;
 
 #export XZ_OPT="--threads=0"
 export DEFAULT_USER="steve"
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+source $ZSH/themes/$ZSH_THEME.zsh-theme
 # key bindings
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[3~" delete-char  
-bindkey "\e[2~" quoted-insert
-bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
-bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
-bindkey "\ee[C" forward-word
-bindkey "\ee[D" backward-word
-bindkey "^H" backward-delete-word
+#bindkey "\e[1~" beginning-of-line
+#bindkey "\e[4~" end-of-line
+#bindkey "\e[5~" beginning-of-history
+#bindkey "\e[6~" end-of-history
+#bindkey "\e[3~" delete-char  
+#bindkey "\e[2~" quoted-insert
+#bindkey "\e[5C" forward-word
+#bindkey "\eOc" emacs-forward-word
+#bindkey "\e[5D" backward-word
+#bindkey "\eOd" emacs-backward-word
+#bindkey "\ee[C" forward-word
+#bindkey "\ee[D" backward-word
+#bindkey "^H" backward-delete-word
 # for rxvt
-bindkey "e[8~" end-of-line
-bindkey "e[7~" beginning-of-line
+#bindkey "e[8~" end-of-line
+#bindkey "e[7~" beginning-of-line
 # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-bindkey "eOH" beginning-of-line
-bindkey "eOF" end-of-line
+#bindkey "eOH" beginning-of-line
+#bindkey "eOF" end-of-line
 # for freebsd console
-bindkey "e[H" beginning-of-line
-bindkey "e[F" end-of-line
+#bindkey "e[H" beginning-of-line
+#bindkey "e[F" end-of-line
 # completion in the middle of a line
-bindkey '^i' expand-or-complete-prefix
+#bindkey '^i' expand-or-complete-prefix

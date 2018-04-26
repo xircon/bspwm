@@ -7,8 +7,9 @@
 ## Load appearance settings
 
 
-/usr/lib/xfce4/notifyd/xfce4-notifyd &
-avant-window-navigator &
+/usr/lib/xfce4/notifyd/xfce4-notifyd-bspwm &
+#avant-window-navigator &
+(sleep 5 && fbpanel) &
 xsetroot -cursor_name left_ptr &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 xrdb merge .Xresources &
@@ -35,7 +36,7 @@ skippy-xd --start-daemon &
 copyq &
 dropbox &
 ulauncher &
-ulauncher-toggle &
+(sleep 10 && ulauncher-toggle) &
 
 
 feh --randomize --bg-fill ~/wallpaper/Dark/* &

@@ -254,8 +254,8 @@ mod1 + @button1
 #
 
 # run applications
-super + space
-	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
+#super + space
+#	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
 
 super + shift + space
 	rofi -show
@@ -363,3 +363,9 @@ alt + q
 
 alt + x
 	xkill	
+
+super + space
+	rofi -show window
+
+alt + p
+	~/scripts/corebox.sh

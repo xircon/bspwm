@@ -1,0 +1,30 @@
+conky.config = {
+background=false,
+update_interval=1,
+double_buffer=true,
+no_buffers=true,
+imlib_cache_size=10,
+draw_shades=false,
+draw_outline=false,
+draw_borders=false,
+gap_x=1200,
+gap_y=650,
+alignment="top_left",
+maximum_width=400,
+own_window=true,
+own_window_type="dock",
+own_window_transparent = true,
+own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+own_window_argb_visual=true,
+own_window_argb_value=60,
+use_xft=true,
+xftalpha=1,
+text_buffer_size=256,
+override_utf8_locale=true,
+font="Droid Sans:size=11",
+color0='80FFF9',
+}
+conky.text = [[
+#${color f9f999}${color orange}
+${execpi 60 ~/.config/bspwm/scripts/gmail2.py}
+]]
