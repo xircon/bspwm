@@ -101,6 +101,7 @@ alias drpb="cd ~/Dropbox"
 alias media="cd /home/media/"
 alias sc="cd ~/scripts"
 alias pxc="cd /home/steve/scripts/i3 && ./plasma-xcape.sh"
+alias cxc="/home/steve/.config/bspwm/xcape/cinnamon-xcape.sh"
 #Memory:
 alias psmem="sudo ps_mem"
 alias psg="ps aux | grep "
@@ -299,7 +300,7 @@ swapb ()
 
 rustp () { cargo new $1 --bin && cd $1 }
         
-alias wallp='cd ~/Wallpaper'
+alias wallp='cd ~/wallpaper'
 alias myip='echo ipv6 && curl v6.ifconfig.co && echo ipv4 && curl v4.ifconfig.co'
 alias cfg='cd ~/.config'
 alias cclip='xclip -selection clipboard'
