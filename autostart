@@ -38,7 +38,6 @@ dropbox &
 ulauncher &
 (sleep 10 && ulauncher-toggle) &
 
-
 feh --randomize --bg-fill ~/wallpaper/Dark/* &
 
 ## hides mouse when you are not using it. When mouse is hidden, rootmenu considers mouse on desktop, so actions can be triggered.
@@ -88,3 +87,4 @@ conky -c /home/steve/.config/bspwm/conky/agenda-conk &
 copyq hide &
 (sleep 20 && megasync) &
 #/usr/lib/mate-notification-daemon/mate-notification-daemon &
+sakura &
