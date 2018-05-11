@@ -39,6 +39,9 @@ alias defragr='sudo btrfs filesystem defragment -r /'
 alias defragh='sudo btrfs filesystem defragment -r /home'
 alias defragv='sudo btrfs filesystem defragment -r /var'
 
+# Keboard related
+alias xevk="xev -event keyboard" 
+
 #Bookmark Directory system:
 alias bmm='echo `pwd`'
 bm() {
@@ -301,7 +304,8 @@ swapb ()
 rustp () { cargo new $1 --bin && cd $1 }
         
 alias wallp='cd ~/wallpaper'
-alias myip='echo ipv6 && curl v6.ifconfig.co && echo ipv4 && curl v4.ifconfig.co'
+alias myip="echo 'Wireless wlp4s0' && localip && echo -n 'ipv6: ' && curl v6.ifconfig.co && echo -n 'ipv4: ' && curl v4.ifconfig.co"
+alias localip="echo $(ip addr show wlp4s0 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 alias cfg='cd ~/.config'
 alias cclip='xclip -selection clipboard'
 alias cls='clear'
