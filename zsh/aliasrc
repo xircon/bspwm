@@ -103,7 +103,7 @@ alias conf="cd ~/.config"
 alias drpb="cd ~/Dropbox"
 alias media="cd /home/media/"
 alias sc="cd ~/scripts"
-alias pxc="cd /home/steve/scripts/i3 && ./plasma-xcape.sh"
+alias pxc="/home/steve/.config/autostart-scripts/plasma-xcape.sh"
 alias cxc="/home/steve/.config/bspwm/xcape/cinnamon-xcape.sh"
 #Memory:
 alias psmem="sudo ps_mem"
@@ -184,6 +184,8 @@ catb () {cat `which $1` | fzf --reverse; echo `which $1` }
 catf () {cat $1 | fzf -e -i --reverse} 
 fcat () {cat $1 | fzf -e -i --reverse} 
 
+## Locale
+alias localepurge="sudo /usr/bin/localepurge-config && sudo localepurge ##<<this one"
 
 yupf ()
 { date
@@ -210,7 +212,7 @@ yupf ()
 
 yup ()
 { d1=`date`
-  echo "Update mirrors?"
+  echo -n "Update mirrors? "
   read temp
   case $temp in
        y)

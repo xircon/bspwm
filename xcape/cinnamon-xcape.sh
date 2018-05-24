@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+echo $XDG_CURRENT_DESKTOP
+if [ $XDG_CURRENT_DESKTOP = "GNOME" ] ;  then
+   echo "Booo!"
+   exit
+fi
+
 notify-send "cinnamon xcape starting"
 #################
 # Kill X server #
