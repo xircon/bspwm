@@ -32,6 +32,11 @@ alias pinst="expac -Q \"%-33n   %d\" | fzf --reverse -m --header=\"TAB key to (u
 alias ipkg="~/scripts/ipkg.sh"
 alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
 
+#Logout / Reboot etc
+alias lo="qdbus org.kde.ksmserver /KSMServer logout 1 3 3"
+alias lonc="qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+
+
 #btrfs
 alias snapit='cd / && sudo btrfs subvolume snapshot / /snapshots/@`date +"%Y%m%d-%H:%M"` && sudo update-grub'
 alias snapls='sudo btrfs subvolume list -a /'
@@ -95,7 +100,11 @@ alias rmcoredmp="sudo rm -r /var/lib/systemd/coredump/*"
 alias roku="roku 192.168.0.7"
 alias nsp="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0"
 alias sp="xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 1"
+lsd() {
+   ls -al|awk '{ print $1 " " $9 }'|grep ^d | awk '{ print $2 }'
+}
 #Directory Shortcuts:
+alias la="ls -lah"
 alias home="~"
 alias ~="cd ~/"
 alias dl="cd ~/Downloads"
@@ -187,45 +196,49 @@ fcat () {cat $1 | fzf -e -i --reverse}
 ## Locale
 alias localepurge="sudo /usr/bin/localepurge-config && sudo localepurge ##<<this one"
 
+## Plasma
+alias killp="killall plasmashell && plasmashell &"
+
 yupf ()
-{ date
-  sudo pacman-mirrors -f 8
-  echo "\n\e[34m#######################"
-  echo "# Updating system.....#"
-  echo "#######################\e[39m\n"    
-  time pacaur -Syyu --color=auto --needed --noconfirm --noedit
-  echo "\n\e[34m######################"
-  echo "# Cleaning cache.....#"
-  echo "######################\e[39m\n"
+{ yup
+  echo "$b######################$n"
+  echo "$b# Cleaning cache.....#$n"
+  echo "$b######################$n"
   sudo paccache -rk3
   sudo paccache -ruk0
-  echo "\n\e[34m##############################"
-  echo "# Optimizing databases...... #"
-  echo "##############################\e[39m\n"
-  sudo pacman-optimize
   sudo /usr/bin/localepurge-config
-  sudo localepurge
-  echo "\e[34m##################"
-  echo "# Finished...... #"
-  echo "##################\e[39m\n"
+  echo "$b#######################$n"
+  echo "$b#Purging unused locals#$n"
+  echo "$b#######################$n"
+  echo $lf
+  localepurge
+  echo "$b##################$n"
+  echo "$b# Finished...... #$n"
+  echo "$b##################$n"
 }  
 
 yup ()
-{ d1=`date`
+{ 
+  r="\e[1m\e[31m" # Red
+  n="\e[39m"        # Back to normal
+  b="\e[1m\e[34m"   # Blue
+  lf="\n"           # line feed
+  d1=`date`
   echo -n "Update mirrors? "
   read temp
   case $temp in
        y)
        	   sudo pacman-mirrors -f
   esac
-  echo "\n\e[1m\e[31m################################################################\e[39m"
+  echo "$r################################################################$n"
   cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
-  echo "\e[31m################################################################\e[39m\e[0m\n"
-  echo "\n\e[1m\e[34m#######################"
-  echo "# Updating system.....#"
-  echo "#######################\e[39m\e[0m\n"    
-  time pacaur -Syyu --color=auto --noconfirm --needed --noedit
-  time pacaur -Sya --color=auto --noconfirm --needed --noedit
+  echo "$r################################################################$n"
+  echo ""
+  echo "$b#######################"
+  echo "$b# Updating system.....#"
+  echo "$b#######################$n"    
+  time trizen -Syyu --noconfirm --needed --noedit
+  time trizen -Syyua --noconfirm --needed --noedit
   echo "Start  $d1"
   echo "Finish `date`"
   sudo updatedb &

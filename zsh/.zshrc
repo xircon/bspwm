@@ -9,6 +9,8 @@ setopt HIST_IGNORE_ALL_DUPS
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
+
+export PATH="/usr/lib/ccache/bin/:$PATH"
  
 export TERM="xterm-termite"
 #if [[ $TERM == xterm-termite ]]; then
@@ -37,6 +39,9 @@ POWERLEVEL9K_OS_ICON_FOREGROUND="0"
 POWERLINE_DISABLE_RPROMPT="true"
 POWERLINE_HIDE_HOST_NAME="true"
 POWERLINE_NO_BLANK_LINE="true"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 
 # Uncomment the following line to use case-sensitive completion.

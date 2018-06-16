@@ -6,6 +6,13 @@ if [ $XDG_CURRENT_DESKTOP = "GNOME" ] ;  then
    exit
 fi
 
+echo $XDG_CURRENT_DESKTOP
+if [ $XDG_CURRENT_DESKTOP = "KDE" ] ;  then
+   echo "Booo!"
+   exit
+fi
+
+
 notify-send "cinnamon xcape starting"
 #################
 # Kill X server #
