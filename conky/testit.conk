@@ -1,0 +1,43 @@
+conky.config = {
+double_buffer = true,
+background = false ,
+use_xft = true,
+font = "MgOpen Modata L:size=7:bold",
+update_interval = 1,
+total_run_times = 0,
+own_window = true,
+own_window_type = 'normal',
+own_window_transparent = true,
+own_window_argb_visual = true,
+own_window_hints = 'undecorated,skip_taskbar,skip_pager,below',
+
+draw_shades = false,
+draw_outline = false,
+draw_borders = false,
+draw_graph_borders = true,
+default_color = 'white',
+alignment = 'top_right',
+gap_x = 12,
+gap_y = 250,
+no_buffers = true,
+uppercase = false,
+cpu_avg_samples = 2,
+net_avg_samples = 2,
+override_utf8_locale = true,
+text_buffer_size = 4096,
+
+color1 = '00f5ff',
+color2 = 'cd5555',
+color3 = '11B3F8',
+color4 = '0000ff',
+color5 = '176e88',
+color6 = 'ff4500',
+color7 = '00FF00',
+color8 = 'FF8000',
+color9 = 'FF0000',
+
+}
+conky.text = [[
+${font}
+${execpi 60 sudo ps_mem | tail -n13 | head -n10 | awk '{print $7 $8 " " $9}'  | tac}
+]]

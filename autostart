@@ -87,4 +87,5 @@ conky -c /home/steve/.config/bspwm/conky/agenda-conk &
 copyq hide &
 (sleep 20 && megasync) &
 #/usr/lib/mate-notification-daemon/mate-notification-daemon &
+/opt/extras.ubuntu.com/calendar-indicator/bin/calendar-indicator &
 sakura &

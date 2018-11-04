@@ -10,27 +10,31 @@ alias blame="systemd-analyze blame"
 alias cx='chmod +x'
 alias fixc="killall cairo-dock && cairo-dock &"
 alias joerc="cd ~ && joe .joerc && cp -f .joerc ~/Dropbox/config_backup && sudo cp -f .joerc /root/.joerc"
-alias upf="yaourt -Ss featherpad && pacaur -S featherpad-git"
+alias upf="trizen -Ss featherpad && trizen -S featherpad-git"
 alias updb="time sudo updatedb"
 alias updatedb="time sudo updatedb"
 alias locate="locate -ie"
 alias loc="locate -ie"
 alias spectre="dmesg | grep microcode  && sudo spectre-meltdown-checker"
 alias gpgrk="gpg --recv-key "
-#alias yup="date && time yaourt -Syyua --noconfirm"
+#alias yup="date && time trizen -Syyua --noconfirm"
 alias pmi="sudo pacman -Qs "
-alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && yaourt -Syyua --noconfirm"
+alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && trizen -Syyua --noconfirm"
 #alias up?="update-notifier"
-alias yy="yaourt"
-alias yyr="yaourt -R "
-alias yrt="yaourt"
-alias yys="yaourt -Si "
-alias yyi="yaourt -Qi "
-alias yync="yaourt --m-arg "--skipchecksums" -S "
+alias yy="trizen"
+alias yyr="trizen -R"
+alias yrt="trizen"
+alias yys="trizen -Si "
+alias yyi="trizen -Qi "
+alias yync="trizen --m-arg "--skipchecksums" -S "
 alias orp='sudo pacman -Rs $(pacman -Qqdt)'
 alias pinst="expac -Q \"%-33n   %d\" | fzf --reverse -m --header=\"TAB key to (un)select. ENTER key to remove. ESC to quit.\" --prompt='Enter string to filter list > ' | awk '{print $1}'"
 alias ipkg="~/scripts/ipkg.sh"
 alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
+
+# Browsers:
+alias vacff='find $HOME/.mozilla/ \( -name "*.sqlite" \) -exec sqlite3 {} "vacuum" \;'
+
 
 #Logout / Reboot etc
 alias lo="qdbus org.kde.ksmserver /KSMServer logout 1 3 3"
@@ -67,6 +71,7 @@ alias aliases="cd ~ && micro .aliasesrc && unalias -m '*' && . ~/.aliasesrc && c
 alias vv="viewnior"
 alias xv="xviewer"
 alias netup="sudo systemctl restart NetworkManager && killall nm-applet && sleep 5 && nm-applet&"
+alias netstat='hwinfo --netcard --wlan --bluetooth | grep -Ei "model\:|driver\:|status\:|cmd\:|file:|detected\:" | grep -v "Config Status" '
 alias killl="killall"
 alias hs="history | grep "
 alias lal="cd ~ && cat .zshrc | grep alias"
@@ -74,7 +79,7 @@ alias py2="python2"
 alias py="python"
 alias pmm="sudo pacman-mirrors -f"
 alias spac="sudo pacman -S "
-alias updev="pacaur -Syyua --devel -q --needed --noconfirm --noedit"
+alias updev="trizen -Syyua --devel -q --needed --noconfirm --noedit"
 
 #Suspend Lid Switch
 alias sp-="systemd-inhibit --what=handle-lid-switch sleep 2592000 &"
@@ -159,9 +164,12 @@ alias sj="sudo joe"
 alias fp="featherpad "
 alias sfp="sudo featherpad "
 alias notes="clear && sncli sync && sncli"
-alias e="micro "
+#alias e="micro "
 alias mu="micro"
 alias se="TERM=xterm-256color sudo micro "
+# Emacs
+alias edir="cd ~/.emacs.d"
+
 
 #Quake
 alias nightmare="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game nightmare +map nightmare"
@@ -186,7 +194,7 @@ alias r4="sky-remote-cli 192.168.0.3 rewind rewind rewind rewind"
 alias s="sky-remote-cli 192.168.0.3 "
 alias streamcr="/home/steve/git/stream2chromecast/stream2chromecast.py "
 #List installed
-yyl () { yaourt $* | grep installed }
+yyl () { trizen $* | grep installed }
 locg () { locate $1 | grep $2 }
 catg () { cat $1 | grep $2 }
 catb () {cat `which $1` | fzf --reverse; echo `which $1` } 
@@ -198,6 +206,9 @@ alias localepurge="sudo /usr/bin/localepurge-config && sudo localepurge ##<<this
 
 ## Plasma
 alias killp="killall plasmashell && plasmashell &"
+
+alias yyup='echo "y" | yup'
+
 
 yupf ()
 { yup
@@ -219,17 +230,23 @@ yupf ()
 
 yup ()
 { 
-  r="\e[1m\e[31m" # Red
+  b="\e[1m\e[31m" # Red
   n="\e[39m"        # Back to normal
-  b="\e[1m\e[34m"   # Blue
+  r="\e[1m\e[34m"   # Blue
   lf="\n"           # line feed
   d1=`date`
   echo -n "Update mirrors? "
-  read temp
-  case $temp in
-       y)
-       	   sudo pacman-mirrors -f
+
+  read ytemp
+
+  case $ytemp in
+       "y")
+         sudo pacman-mirrors -f
+       ;;
+       *)
+       ;;
   esac
+  
   echo "$r################################################################$n"
   cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
   echo "$r################################################################$n"
@@ -242,6 +259,13 @@ yup ()
   echo "Start  $d1"
   echo "Finish `date`"
   sudo updatedb &
+  echo .
+  echo .
+  FF=$(pgrep -c firefox)
+  if [ $FF -eq "0" ]; then
+     echo "Vacuuming Firefox DB"
+     vacff &
+  fi	 
 }  
 alias mucd="cd ~/.config/micro"
 
@@ -325,5 +349,5 @@ alias cfg='cd ~/.config'
 alias cclip='xclip -selection clipboard'
 alias cls='clear'
 alias xckill='killall xcape'
-alias devel='pacaur -Syyu --devel --noconfirm'
+alias devel='trizen -Syyu --devel --needed --noconfirm'
 alias bspconk='cd ~/.config/bspwm/conky'

@@ -1,36 +1,41 @@
 #!/bin/bash
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# Set personal aliases overriding those provided by oh-my-zsh libs,
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+ alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias killx="setxkbmap -option terminate:ctrl_alt_bksp"
 alias blame="systemd-analyze blame"
 alias cx='chmod +x'
 alias fixc="killall cairo-dock && cairo-dock &"
 alias joerc="cd ~ && joe .joerc && cp -f .joerc ~/Dropbox/config_backup && sudo cp -f .joerc /root/.joerc"
-alias upf="yaourt -Ss featherpad && pacaur -S featherpad-git"
+alias upf="trizen -Ss featherpad && trizen -S featherpad-git"
 alias updb="time sudo updatedb"
 alias updatedb="time sudo updatedb"
 alias locate="locate -ie"
 alias loc="locate -ie"
 alias spectre="dmesg | grep microcode  && sudo spectre-meltdown-checker"
 alias gpgrk="gpg --recv-key "
-#alias yup="date && time yaourt -Syyua --noconfirm"
+#alias yup="date && time trizen -Syyua --noconfirm"
 alias pmi="sudo pacman -Qs "
-alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && yaourt -Syyua --noconfirm"
+alias yup1="sudo pacman -Sy archlinux-keyring manjaro-keyring --noconfirm && date && trizen -Syyua --noconfirm"
 #alias up?="update-notifier"
-alias yy="yaourt"
-alias yyr="yaourt -R "
-alias yrt="yaourt"
-alias yys="yaourt -Si "
-alias yyi="yaourt -Qi "
-alias yync="yaourt --m-arg "--skipchecksums" -S "
+alias yy="trizen"
+alias yyp="sudo pacman -Ss "
+alias yyr="trizen -R"
+alias yrt="trizen"
+alias yys="trizen -Si "
+alias yyi="trizen -Qi "
+alias yync="trizen --m-arg "--skipchecksums" -S "
 alias orp='sudo pacman -Rs $(pacman -Qqdt)'
 alias pinst="expac -Q \"%-33n   %d\" | fzf --reverse -m --header=\"TAB key to (un)select. ENTER key to remove. ESC to quit.\" --prompt='Enter string to filter list > ' | awk '{print $1}'"
 alias ipkg="~/scripts/ipkg.sh"
-alias paclog="cat /var/log/pacman.log | fzf -e +s --reverse"
+alias paclog="cat /var/log/pacman.log | grep -iE 'installed|upgraded' | fzf -e +s --reverse"
+
+# Browsers:
+alias vacff='find $HOME/.mozilla/ \( -name "*.sqlite" \) -exec sqlite3 {} "vacuum" \;'
+
 
 #Logout / Reboot etc
 alias lo="qdbus org.kde.ksmserver /KSMServer logout 1 3 3"
@@ -63,10 +68,11 @@ alias cdr='ranger --show-only-dirs --choosedir=/tmp/.dir && $(cat /tmp/.dir)'
 alias wall='ranger ~/wallpaper --choosefile=/tmp/.rfile && $(feh --bg-fill `cat /tmp/.rfile`)'
 
 alias zshc="cd ~ && micro .zshrc && unalias -m '*' && . ~/.zshrc && cp -f .zshrc ~/.config/bspwm/zsh"
-alias aliases="cd ~ && micro .aliasesrc && unalias -m '*' && . ~/.aliasesrc && cp -f .aliasesrc ~/.config/bspwm/zsh"
+alias aliases="cd ~ && emacsclient -c .aliasesrc && unalias -m '*' && source ~/.aliasesrc"
 alias vv="viewnior"
 alias xv="xviewer"
 alias netup="sudo systemctl restart NetworkManager && killall nm-applet && sleep 5 && nm-applet&"
+alias netstat='hwinfo --netcard --wlan --bluetooth | grep -Ei "model\:|driver\:|status\:|cmd\:|file:|detected\:" | grep -v "Config Status" '
 alias killl="killall"
 alias hs="history | grep "
 alias lal="cd ~ && cat .zshrc | grep alias"
@@ -74,7 +80,7 @@ alias py2="python2"
 alias py="python"
 alias pmm="sudo pacman-mirrors -f"
 alias spac="sudo pacman -S "
-alias updev="pacaur -Syyua --devel -q --needed --noconfirm --noedit"
+alias updev="trizen -Syyua --devel -q --needed --noconfirm --noedit"
 
 #Suspend Lid Switch
 alias sp-="systemd-inhibit --what=handle-lid-switch sleep 2592000 &"
@@ -159,13 +165,19 @@ alias sj="sudo joe"
 alias fp="featherpad "
 alias sfp="sudo featherpad "
 alias notes="clear && sncli sync && sncli"
-alias e="micro "
-alias mu="micro"
+#alias e="micro "
+alias ee="micro"
 alias se="TERM=xterm-256color sudo micro "
+# Emacs
+alias edir="cd ~/.emacs.d"
+alias emt="emacs -nw -Q "
+alias emc="emacsclient -c &"
+alias rstrt="systemctl restart --user emacs && kdialog --yesno 'Emacs will open shortly' && emacsclient -c &"
+
 
 #Quake
 alias nightmare="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game nightmare +map nightmare"
-alias satyr="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game alk14 +map alk14"                                                                             ✔ 
+alias satyr="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game alk14 +map alk14"                                                                            
 alias amari="killall xcape && cd /home/steve/.yq2/nightmare && yamagi-quake2 +set game amari +map amari"
 
 #Sky Remote:
@@ -186,7 +198,7 @@ alias r4="sky-remote-cli 192.168.0.3 rewind rewind rewind rewind"
 alias s="sky-remote-cli 192.168.0.3 "
 alias streamcr="/home/steve/git/stream2chromecast/stream2chromecast.py "
 #List installed
-yyl () { yaourt $* | grep installed }
+yyl () { trizen $* | grep installed }
 locg () { locate $1 | grep $2 }
 catg () { cat $1 | grep $2 }
 catb () {cat `which $1` | fzf --reverse; echo `which $1` } 
@@ -198,6 +210,9 @@ alias localepurge="sudo /usr/bin/localepurge-config && sudo localepurge ##<<this
 
 ## Plasma
 alias killp="killall plasmashell && plasmashell &"
+
+alias yyup='echo "y" | yup'
+
 
 yupf ()
 { yup
@@ -219,17 +234,23 @@ yupf ()
 
 yup ()
 { 
-  r="\e[1m\e[31m" # Red
+  b="\e[1m\e[31m" # Red
   n="\e[39m"        # Back to normal
-  b="\e[1m\e[34m"   # Blue
+  r="\e[1m\e[34m"   # Blue
   lf="\n"           # line feed
   d1=`date`
   echo -n "Update mirrors? "
-  read temp
-  case $temp in
-       y)
-       	   sudo pacman-mirrors -f
+
+  read ytemp
+
+  case $ytemp in
+       "y")
+         sudo pacman-mirrors -f
+       ;;
+       *)
+       ;;
   esac
+  
   echo "$r################################################################$n"
   cat /etc/pacman.d/mirrorlist  | grep Server | head -n1 
   echo "$r################################################################$n"
@@ -238,10 +259,17 @@ yup ()
   echo "$b# Updating system.....#"
   echo "$b#######################$n"    
   time trizen -Syyu --noconfirm --needed --noedit
-  time trizen -Syyua --noconfirm --needed --noedit
+  #time trizen -Syyua --noconfirm --needed --noedit
   echo "Start  $d1"
   echo "Finish `date`"
   sudo updatedb &
+  echo .
+  echo .
+  FF=$(pgrep -c firefox)
+  if [ $FF -eq "0" ]; then
+     echo "Vacuuming Firefox DB"
+     vacff &
+  fi	 
 }  
 alias mucd="cd ~/.config/micro"
 
@@ -319,11 +347,29 @@ swapb ()
 rustp () { cargo new $1 --bin && cd $1 }
         
 alias wallp='cd ~/wallpaper'
-alias myip="echo 'Wireless wlp4s0' && localip && echo -n 'ipv6: ' && curl v6.ifconfig.co && echo -n 'ipv4: ' && curl v4.ifconfig.co"
+alias myip="echo 'Wireless wlp4s0' && localip && echo -n 'ipv6: ' && curl v6.ifconfig.co && echo -n 'ipv4: ' && curl -4 v4.ifconfig.co"
 alias localip="echo $(ip addr show wlp4s0 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/')"
 alias cfg='cd ~/.config'
 alias cclip='xclip -selection clipboard'
 alias cls='clear'
 alias xckill='killall xcape'
-alias devel='pacaur -Syyu --devel --noconfirm'
+alias devel='trizen -Syyu --devel --needed --noconfirm'
 alias bspconk='cd ~/.config/bspwm/conky'
+alias xxx='xmodmap .Xmodmap && sleep 5 && xcape -e "Hyper_L=space"'
+
+alias inxif="inxi --full -v 8"
+alias inxi="inxi -Fxxxz -c0"
+alias inxic="inxi -Fxxxz"
+
+alias az+="killall running.bin || true && wg-quick up azirevpn-uk1 || true && running.bin &> /dev/null&"
+alias az-="killall running.bin || true && wg-quick down azirevpn-uk1 || true && running.bin &> /dev/null&"
+
+alias rm="trash-put"
+
+trash () {
+echo "trash-put           trash files and directories."
+echo "trash-empty         empty the trashcan(s)."
+echo "trash-list          list trashed files."
+echo "trash-restore       restore a trashed file."
+echo "trash-rm            remove individual files from the trashcan."
+}

@@ -3,8 +3,8 @@ conky.config = {
 -------------------------------------
 --  Generic Settings
 -------------------------------------
-background=false,
---background=true,
+--background=false,
+background=true,
 update_interval=1,
 double_buffer=true,
 no_buffers=true,
@@ -28,7 +28,7 @@ alignment="bottom_left",
 
 own_window=true,
 --own_window=false,
-own_window_type="desktop",
+own_window_type="normal",
 own_window_transparent = true,
 own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
 

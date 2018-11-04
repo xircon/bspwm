@@ -1,5 +1,14 @@
 #!/bin/bash
 export LANG="en_US.UTF-8"
+
+. /etc/profile.d/fzf-extras.zsh
+
+autoload -U promptinit; promptinit
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/lib/spaceship-prompt/spaceship.zsh
+prompt spaceship
+
+
 SAVEHIST=10
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS 
@@ -11,7 +20,8 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
- 
+export PATH=$PATH:~/.cargo/bin 
+export PATH=$PATH:/home/steve/go
 export TERM="xterm-termite"
 #if [[ $TERM == xterm-termite ]]; then
 #  . /etc/profile.d/vte.sh
@@ -28,20 +38,24 @@ ZSH=/usr/share/oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="powerline"
-POWERLEVEL9K_MODE='awesome-fontconfig'
-ZSH_THEME="powerlevel9k/powerlevel9k"
+
+##POWERLEVEL9K_MODE='awesome-fontconfig'
+##ZSH_THEME="powerlevel9k/powerlevel9k"
 #ZSH_THEME="/usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme"
 #ZSH_THEME="themes/powerlevel9k/powerlevel9k.zsh-theme"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time vcs context dir rbenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
-POWERLEVEL9K_OS_ICON_BACKGROUND="99"
-POWERLEVEL9K_OS_ICON_FOREGROUND="0"
-POWERLINE_DISABLE_RPROMPT="true"
-POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_NO_BLANK_LINE="true"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+# POWERLEVEL9K_HOME_SUB_ICON=$'\UE18D '
+# POWERLEVEL9K_HOME_ICON=$'\uF015 '
+
+##POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time vcs context dir rbenv)
+##POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator)
+##POWERLEVEL9K_OS_ICON_BACKGROUND="99"
+##POWERLEVEL9K_OS_ICON_FOREGROUND="0"
+##POWERLINE_DISABLE_RPROMPT="true"
+##POWERLINE_HIDE_HOST_NAME="true"
+##POWERLINE_NO_BLANK_LINE="true"
+##POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+##POWERLEVEL9K_SHORTEN_DELIMITER=""
+##POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -88,9 +102,9 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
 
-autoload -Uz promptinit
-promptinit
-BROWSER=/usr/bin/firefox-nightly
+#autoload -Uz promptinit
+#promptinit
+BROWSER=/usr/bin/firefox
 
 #. ~/.config/bspwm/z.sh
 . /usr/share/fzf/key-bindings.zsh
@@ -293,7 +307,9 @@ PERL_MM_OPT="INSTALL_BASE=/home/steve/perl5"; export PERL_MM_OPT;
 
 #export XZ_OPT="--threads=0"
 export DEFAULT_USER="steve"
-source $ZSH/themes/$ZSH_THEME.zsh-theme
+
+##source $ZSH/themes/$ZSH_THEME.zsh-theme
+
 # key bindings
 #bindkey "\e[1~" beginning-of-line
 #bindkey "\e[4~" end-of-line
@@ -319,3 +335,10 @@ source $ZSH/themes/$ZSH_THEME.zsh-theme
 #bindkey "e[F" end-of-line
 # completion in the middle of a line
 #bindkey '^i' expand-or-complete-prefix
+autoload -U promptinit; promptinit
+prompt spaceship
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_DIR_PREFIX=$SPACESHIP_CHAR_SYMBOL	
+SPACESHIP_EXEC_TIME_ELAPSED=10
